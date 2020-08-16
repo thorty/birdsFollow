@@ -1,4 +1,6 @@
 var ratio = 80;
+var eyeSpeed = 4;
+var borderLine = 20;
 
 var irisOne = {
   x: 300,
@@ -39,41 +41,34 @@ function drawInnerEyes(){
 function follow(){
   strokeWeight(0);
   fill(2);
-  var eyeBorderx = 0;
-  var eyeBordery = 0;
-  var irisborderOne = 0;
-  var irisborderTwo = 0;
-  irisOne.x = mouseX;
-  irisTwo.x = mouseX;
-  irisOne.y = mouseY;
-  irisTwo.y = mouseY;
-  if (mouseX > 325-eyeBorderx) {
-     irisOne.x = 325-eyeBorderx;
-   } else if (mouseX < 275+eyeBorderx) {
-     irisOne.x = 275+eyeBorderx;
-   }
-  if (mouseX > 525-eyeBordery) {
-     irisTwo.x = 525-eyeBordery;
-   } else if (mouseX < 475+eyeBordery) {
-     irisTwo.x = 475+eyeBordery;
-   }
-
-   
-   if (irisTwo.x === 180){
-    irisborderTwo = 40;
+  let movementX = 0;
+  let movementY = 0;
+  if (mouseX <= 300-borderLine){
+    if (irisOne.x >= 300-borderLine){
+      movementX -= eyeSpeed;
     }
-    if (irisOne.x === 180){
-      irisborderOne = 40;
-     }
+  }
+  if (mouseX >= 300+borderLine){
+    if (irisOne.x <= 300+borderLine){
+     movementX += eyeSpeed;
+    }
+  }
+  if (mouseY <= 180-borderLine){
+    if (irisOne.y >= 180-borderLine){
+      movementY -= eyeSpeed;
+    }
+  }
+  if (mouseY >= 180+borderLine){
+    if (irisOne.y <= 180+borderLine){
+      movementY += eyeSpeed;
+    }
+  }
+  
 
-  if (mouseY > 205-eyeBordery) {
-     irisOne.y = 205-eyeBordery -irisborderOne;
-     irisTwo.y = 205-eyeBordery -irisborderTwo;
-   } else if (mouseY < 155+eyeBorderx) {
-     irisOne.y = 155+eyeBorderx +irisborderOne;
-     irisTwo.y = 155+eyeBorderx +irisborderTwo;
-   }
-   
+  irisOne.x += movementX;
+  irisTwo.x += movementX;
+  irisOne.y += movementY;
+  irisTwo.y += movementY;
     
   fill(0);
   circle(irisOne.x, irisOne.y, 40+(ratio/2));
