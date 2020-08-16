@@ -12,7 +12,6 @@ var irisTwo = {
 
 function setup() {
   createCanvas(800, 400);
-  frameRate(60); // Attempt to refresh at starting FPS
 }
 
 function draw() {
@@ -41,13 +40,13 @@ function follow(){
   strokeWeight(0);
   fill(2);
   var eyeBorderx = 0;
-  var eyeBordery = -5;
+  var eyeBordery = 0;
   var irisborderOne = 0;
   var irisborderTwo = 0;
-  irisOne.x = mouseX - floor(movedX /2);
-  irisTwo.x = mouseX - floor(movedX /2);
-  irisOne.y = mouseY - floor(movedY /2);
-  irisTwo.y = mouseY - floor(movedY /2);
+  irisOne.x = mouseX;
+  irisTwo.x = mouseX;
+  irisOne.y = mouseY;
+  irisTwo.y = mouseY;
   if (mouseX > 325-eyeBorderx) {
      irisOne.x = 325-eyeBorderx;
    } else if (mouseX < 275+eyeBorderx) {
