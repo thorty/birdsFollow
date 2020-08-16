@@ -1,3 +1,5 @@
+var ratio = 80;
+
 var irisOne = {
   x: 300,
   y: 180  
@@ -9,7 +11,8 @@ var irisTwo = {
 }
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(800, 400);
+  frameRate(60); // Attempt to refresh at starting FPS
 }
 
 function draw() {
@@ -22,8 +25,8 @@ function drawOuterEyes() {
   stroke(0);
   strokeWeight(8);
   fill(255);
-  circle(300, 180, 80);
-  circle(500, 180, 80);
+  circle(300, 180, 80+ratio);
+  circle(500, 180, 80+ratio);
   drawSnable();
 }
 
@@ -37,32 +40,45 @@ function drawInnerEyes(){
 function follow(){
   strokeWeight(0);
   fill(2);
-  var eyeBorder = 10;
-  irisOne.x = mouseX - 0.5 ;
-  irisTwo.x = mouseX - 0.5;
-  irisOne.y = mouseY - 0.5;
-  irisTwo.y = mouseY - 0.5;
-  if (mouseX > 320-eyeBorder) {
-     irisOne.x = 320-eyeBorder;
-   } else if (mouseX < 280+eyeBorder) {
-     irisOne.x = 280+eyeBorder;
+  var eyeBorderx = 0;
+  var eyeBordery = -5;
+  var irisborderOne = 0;
+  var irisborderTwo = 0;
+  irisOne.x = mouseX - floor(movedX /2);
+  irisTwo.x = mouseX - floor(movedX /2);
+  irisOne.y = mouseY - floor(movedY /2);
+  irisTwo.y = mouseY - floor(movedY /2);
+  if (mouseX > 325-eyeBorderx) {
+     irisOne.x = 325-eyeBorderx;
+   } else if (mouseX < 275+eyeBorderx) {
+     irisOne.x = 275+eyeBorderx;
    }
-  if (mouseX > 520-eyeBorder) {
-     irisTwo.x = 520-eyeBorder;
-   } else if (mouseX < 480+eyeBorder) {
-     irisTwo.x = 480+eyeBorder;
+  if (mouseX > 525-eyeBordery) {
+     irisTwo.x = 525-eyeBordery;
+   } else if (mouseX < 475+eyeBordery) {
+     irisTwo.x = 475+eyeBordery;
    }
-  if (mouseY > 200-eyeBorder) {
-     irisOne.y = 200-eyeBorder;
-     irisTwo.y = 200-eyeBorder;
-   } else if (mouseY < 160+eyeBorder) {
-     irisOne.y = 160+eyeBorder;
-     irisTwo.y = 160+eyeBorder;
+
+   
+   if (irisTwo.x === 180){
+    irisborderTwo = 40;
+    }
+    if (irisOne.x === 180){
+      irisborderOne = 40;
+     }
+
+  if (mouseY > 205-eyeBordery) {
+     irisOne.y = 205-eyeBordery -irisborderOne;
+     irisTwo.y = 205-eyeBordery -irisborderTwo;
+   } else if (mouseY < 155+eyeBorderx) {
+     irisOne.y = 155+eyeBorderx +irisborderOne;
+     irisTwo.y = 155+eyeBorderx +irisborderTwo;
    }
+   
     
   fill(0);
-  circle(irisOne.x, irisOne.y, 40);
-  circle(irisTwo.x, irisTwo.y, 40);
+  circle(irisOne.x, irisOne.y, 40+(ratio/2));
+  circle(irisTwo.x, irisTwo.y, 40+(ratio/2));
 }
 
 function drawSnable(){
