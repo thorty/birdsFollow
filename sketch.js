@@ -4,16 +4,16 @@ var borderLine = 20;
 
 var irisOne = {
   x: 300,
-  y: 180  
+  y: 300  
 }
 
 var irisTwo = {
   x: 500,
-  y: 180  
+  y: 300  
 }
 
 function setup() {
-  createCanvas(800, 400);
+  createCanvas(800, 600);
 }
 
 function draw() {
@@ -26,16 +26,16 @@ function drawOuterEyes() {
   stroke(0);
   strokeWeight(8);
   fill(255);
-  circle(300, 180, 80+ratio);
-  circle(500, 180, 80+ratio);
+  circle(300, 300, 80+ratio);
+  circle(500, 300, 80+ratio);
   drawSnable();
 }
 
 function drawInnerEyes(){
   strokeWeight(0);
   fill(0);
-  circle(300, 180, 40);
-  circle(500, 180, 40);
+  circle(300, 300, 40);
+  circle(500, 300, 40);
 }
 
 function follow(){
@@ -53,13 +53,13 @@ function follow(){
      movementX += eyeSpeed;
     }
   }
-  if (mouseY <= 180-borderLine){
-    if (irisOne.y >= 180-borderLine){
+  if (mouseY <= 300-borderLine){
+    if (irisOne.y >= 300-borderLine){
       movementY -= eyeSpeed;
     }
   }
-  if (mouseY >= 180+borderLine){
-    if (irisOne.y <= 180+borderLine){
+  if (mouseY >= 300+borderLine){
+    if (irisOne.y <= 300+borderLine){
       movementY += eyeSpeed;
     }
   }
@@ -81,9 +81,9 @@ function drawSnable(){
   strokeJoin(ROUND);
   beginShape();
 
-  vertex(380, 250);
-  vertex(400, 280);
-  vertex(420, 250);
+  vertex(380, 400);
+  vertex(400, 430);
+  vertex(420, 400);
   
   endShape();
 
