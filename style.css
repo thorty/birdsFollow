@@ -6,8 +6,8 @@ html, body {
   /* This centers our sketch horizontally. */
   justify-content: center;
   /* This centers our sketch vertically. */
-  align-items: center;  
-   
+  align-items: center;
+
 }
 canvas {
   display: block;
@@ -18,7 +18,7 @@ canvas {
   position: fixed;
   left: 0;
   bottom: 0;
-  width: 100%; 
+  width: 100%;
   color: white;
   text-align: center;
 }
