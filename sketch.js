@@ -42,17 +42,33 @@ function follow() {
   strokeWeight( 0 );
   fill( 2 );
   let movementX = 0;
+  let movementXOne = 0;
+  let movementXTwo = 0;
   let movementY = 0;
+  //irisOne X
   if ( mouseX <= 100 - borderLine ) {
     if ( irisOne.x >= 100 - borderLine ) {
-      movementX -= eyeSpeed;
+      movementXOne -= eyeSpeed;
     }
   }
   if ( mouseX >= 100 + borderLine ) {
     if ( irisOne.x <= 100 + borderLine ) {
-      movementX += eyeSpeed;
+      movementXOne += eyeSpeed;
     }
   }
+  //irisTwo X
+  if ( mouseX <= 300 - borderLine ) {
+    if ( irisTwo.x >= 300 - borderLine ) {
+      movementXTwo -= eyeSpeed;
+    }
+  }
+  if ( mouseX >= 300 + borderLine ) {
+    if ( irisTwo.x <= 300 + borderLine ) {
+      movementXTwo += eyeSpeed;
+    }
+  }
+
+  //iris Y
   if ( mouseY <= 300 - borderLine ) {
     if ( irisOne.y >= 300 - borderLine ) {
       movementY -= eyeSpeed;
@@ -65,8 +81,8 @@ function follow() {
   }
 
 
-  irisOne.x += movementX;
-  irisTwo.x += movementX;
+  irisOne.x += movementXOne;
+  irisTwo.x += movementXTwo;
   irisOne.y += movementY;
   irisTwo.y += movementY;
 
